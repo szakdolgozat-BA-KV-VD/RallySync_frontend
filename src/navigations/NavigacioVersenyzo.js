@@ -1,15 +1,15 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import Container from 'react-bootstrap/Container';
 import Navbar from 'react-bootstrap/Navbar';
 import Offcanvas from 'react-bootstrap/Offcanvas';
 import Nav from 'react-bootstrap/Nav';
 import Button from 'react-bootstrap/Button';
-import useAuthContext from '../contexts/AuthContext';
 import logo2 from "../pages/logo2.png";
+import { AuthContext } from "../contexts/AuthContext";
 
 function NavigacioVersenyzo() {
-    const { user, logout } = useAuthContext();
+    const { logout } = useContext(AuthContext);
 
     return (
         <Navbar expand="md" className="mb-3" style={{ backgroundColor: "#000056" }}>
@@ -80,6 +80,7 @@ function NavigacioVersenyzo() {
                         background-color: #fe0000;
                         border: none;
                         transition: background-color 0.3s ease-in-out;
+                        margin: right;
                     }
 
                     .logout-btn:hover {

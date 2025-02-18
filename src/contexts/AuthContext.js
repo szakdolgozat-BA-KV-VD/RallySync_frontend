@@ -2,7 +2,7 @@ import { createContext, useContext, useEffect, useState } from "react";
 import { myAxios } from "../api/axios";
 import { useNavigate } from "react-router-dom";
 
-const AuthContext = createContext(null);
+export const AuthContext = createContext("");
 
 export const AuthProvider = ({ children }) => {
     const navigate = useNavigate();
@@ -19,7 +19,7 @@ export const AuthProvider = ({ children }) => {
 
     const getUser = async () => {
         try {
-            const { data } = await myAxios.get("/api/user");
+            const { data } = await myAxios.get(`/api/user`);
             setUser(data);
         } catch (error) {
             console.error("Error fetching user:", error);
@@ -58,7 +58,7 @@ export const AuthProvider = ({ children }) => {
     };
 
     return (
-        <AuthContext.Provider value={{ user, logout, loginReg, errors, getUser }}>
+        <AuthContext.Provider value={{ user, logout, loginReg, errors, getUser}}>
             {children}
         </AuthContext.Provider>
     );
@@ -67,7 +67,7 @@ export const AuthProvider = ({ children }) => {
 export default function useAuthContext() {
     const context = useContext(AuthContext);
     if (!context) {
-        throw new Error("useAuthContext must be used within an AuthProvider");
+        throw new Error("useAuthContext-et egy AuthProvider-en belül kell használni.");
     }
     return context;
 }

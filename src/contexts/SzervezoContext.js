@@ -8,6 +8,7 @@ export const SzervezoContext = createContext(null);
 export const SzervezoProvider = ({children}) =>
     {
         
+        
         return ( <SzervezoContext.Provider value={{}}>{children}</SzervezoContext.Provider> )
     }
 export default SzervezoContext

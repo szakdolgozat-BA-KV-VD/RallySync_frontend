@@ -13,5 +13,3 @@ root.render(
     <APIProvider><SzervezoProvider><App /></SzervezoProvider></APIProvider>
   </React.StrictMode>
 );
-
-

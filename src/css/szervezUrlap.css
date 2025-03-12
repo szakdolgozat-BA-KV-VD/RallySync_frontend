@@ -1,28 +1,28 @@
-.urlap{
+.urlap {
     margin: auto;
     width: 50%;
     border: 2px solid silver;
     border-radius: 15px;
 }
 
-.urlap h3{
+.urlap h3 {
     text-align: center;
     margin-top: 10px;
 }
 
-.urlap select{
+.urlap select {
     width: 100%;
     margin: auto;
 }
 
-.urlap .kivalaszt{
+.urlap .kivalaszt {
     display: grid;
     grid-template-columns: 1fr 1fr;
     width: 50%;
     margin: auto;
 }
 
-.urlap .datumok{
+.urlap .datumok {
     display: grid;
     grid-template-columns: 1fr 1fr;
     text-align: center;
@@ -30,18 +30,21 @@
     margin: auto;
 }
 
-.urlap .datumok .datum{
+.urlap .datumok .datum {
     display: grid;
     grid-template-columns: 1fr;
     margin: auto;
 }
 
-.urlap .category{
+.urlap .category {
     display: grid;
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
 }
 
-.urlap .category .catelem{
-    padding: 10px;
-    margin: 10px;
+.urlap .category .catelem {
+    margin: auto;
+}
+
+.gomb {
+    margin: auto;
 }

@@ -39,9 +39,9 @@ export const AuthProvider = ({ children }) => {
 
     useEffect(() => {
         if (!user) {
-          getUser()
+            getUser()
         }
-      }, [])
+    }, [])
 
     const loginReg = async ({ ...adat }, vegpont) => {
         await csrf();
@@ -58,7 +58,7 @@ export const AuthProvider = ({ children }) => {
     };
 
     return (
-        <AuthContext.Provider value={{ user, logout, loginReg, errors, getUser}}>
+        <AuthContext.Provider value={{ user, logout, loginReg, errors, getUser }}>
             {children}
         </AuthContext.Provider>
     );

@@ -16,6 +16,7 @@ import Szervezes from "./pages/Szervezo/Szervezes";
 import Profil from "./pages/Profil";
 import VersenyzoKezdolap from "./pages/Versenyzo/VersenyzoKezdolap";
 import VersenyzoVersenyeim from "./pages/Versenyzo/VersenyzoVersenyeim";
+import VersenyzoJelentkezes from "./pages/Versenyzo/VersenyzoJelentkezes";
 
 function AppRoutes() {
     const { user } = useAuthContext();
@@ -43,6 +44,7 @@ function AppRoutes() {
                     <Route path="galeria" element={<Galeria />} />
                     <Route path="kapcsolat" element={<Kapcsolat />} />
                     <Route path="profil" element={<Profil />} />
+                    <Route path="jelentkezes" element={<VersenyzoJelentkezes />} />
                 </Route>
             )}
 

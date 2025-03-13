@@ -35,7 +35,7 @@ function NavigacioVersenyzo() {
                                 <Nav.Link as={Link} to="/galeria" className="text-black">Galéria</Nav.Link>
                                 <Nav.Link as={Link} to="/jelentkezes" className="text-black">Jelentkezés</Nav.Link>
                                 <Nav.Link as={Link} to="/kapcsolat" className="text-black">Kapcsolat</Nav.Link>
-                                <Nav.Link as={Link} to="/felhasznaloiAdatok" className="text-black">Felhasználói Adatok</Nav.Link>
+                                <Nav.Link as={Link} to="/profil" className="text-black">Felhasználói Adatok</Nav.Link>
                                 <Button
                                     className="w-100 mt-2 logout-btn"
                                     onClick={logout}
@@ -62,7 +62,7 @@ function NavigacioVersenyzo() {
                             <img src={logo2} alt="Logo" width="75" height="75" />
                         </Navbar.Brand>
                         <Nav.Link as={Link} to="/kapcsolat" className="text-white">Kapcsolat</Nav.Link>
-                        <Nav.Link as={Link} to="/felhasznaloiAdatok" className="text-white">Felhasználói Adatok</Nav.Link>
+                        <Nav.Link as={Link} to="/profil" className="text-white">Felhasználói Adatok</Nav.Link>
                         <Button
                             className="logout-btn text-nowrap"
                             onClick={logout}

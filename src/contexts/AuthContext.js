@@ -10,9 +10,9 @@ export const AuthProvider = ({ children }) => {
     const [errors, setErrors] = useState({
         name: "",
         email: "",
+        permission: "",
         password: "",
         password_confirmation: "",
-        permission: "",
     });
 
     const csrf = () => myAxios.get("/sanctum/csrf-cookie");
@@ -43,7 +43,7 @@ export const AuthProvider = ({ children }) => {
         }
     }, [])
 
-    const loginReg = async ({ ...adat }, vegpont) => {
+/*     const loginReg = async ({ ...adat }, vegpont) => {
         await csrf();
         try {
             await myAxios.post(vegpont, adat);
@@ -53,9 +53,33 @@ export const AuthProvider = ({ children }) => {
             console.error(error);
             if (error.response?.status === 422) {
                 setErrors(error.response.data.errors);
+                console.log("rokarudi");
             }
         }
-    };
+    }; */
+
+    const loginReg = async ({ ...adat }, vegpont) => {
+        //lekérjük a csrf tokent
+        await csrf();
+        console.log(adat, vegpont);
+    
+        try {
+          await myAxios.post(vegpont, adat);
+          console.log("siker");
+          //sikeres bejelentkezés/regisztráció esetén
+          //Lekérdezzük a usert
+          //await getUser();
+          //elmegyünk  a kezdőlapra
+          getUser()
+          navigate("/");
+    
+        } catch (error) {
+          console.log(error);
+          if (error.response.status === 422) {
+            setErrors(error.response.data.errors);
+          }
+        }
+      };
 
     return (
         <AuthContext.Provider value={{ user, logout, loginReg, errors, getUser }}>

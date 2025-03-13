@@ -14,14 +14,15 @@ import Versenyek from "./pages/Vendeg/Versenyek";
 import SzVersenyek from "./pages/Szervezo/SzVersenyek";
 import Szervezes from "./pages/Szervezo/Szervezes";
 import Profil from "./pages/Profil";
-
+import VersenyzoKezdolap from "./pages/Versenyzo/VersenyzoKezdolap";
+import VersenyzoVersenyeim from "./pages/Versenyzo/VersenyzoVersenyeim";
 
 function AppRoutes() {
     const { user } = useAuthContext();
 
     return (
         <Routes>
-            {/* Vendég layout */}
+            {/* Vendég layout - mindenki számára elérhető, ha nincs bejelentkezve */}
             {!user && (
                 <Route path="/" element={<VendegLayout />}>
                     <Route index element={<Kezdolap />} />
@@ -32,33 +33,46 @@ function AppRoutes() {
                     <Route path="regisztracio" element={<Regisztracio />} />
                 </Route>
             )}
-            {/* {user && user.permission === 1 ? (
-                <Route path="/" element={<VersenyzoLayout />}>
-                    <Route index element={<Kezdolap />} />
-                    <Route path="versenyeim" element={<Versenyeim />} />
-                    <Route path="regisztracio" element={<Regisztracio />} />
-                </Route>
-            ) : ""} */}
 
-            {user && user.permission === 2 ? (
+            {/* Versenyző layout*/}
+            {user && user.permission === 1 && (
+                <Route path="/" element={<VersenyzoLayout />}>
+                    <Route index element={<VersenyzoKezdolap />} />
+                    <Route path="versenyek" element={<Versenyek />} />
+                    <Route path="versenyzoVersenyeim" element={<VersenyzoVersenyeim />} />
+                    <Route path="galeria" element={<Galeria />} />
+                    <Route path="kapcsolat" element={<Kapcsolat />} />
+                    <Route path="profil" element={<Profil />} />
+                </Route>
+            )}
+
+            {/* Szervező layout*/}
+            {user && user.permission === 2 && (
                 <Route path="/" element={<SzervezoLayout />}>
                     <Route index element={<Kezdolap />} />
                     <Route path="versenyeim" element={<SzVersenyek />} />
                     <Route path="szervezes" element={<Szervezes />} />
-                    <Route path="Profil" element={<Profil />} />
+                    <Route path="profil" element={<Profil />} />
                 </Route>
-            ) : ""}
-            {/* Admin és User ugyanazon útvonalon */}
-            {user && (
-                <Route path="/" element={
-                    user.permission === 1 ?
-                        (<VersenyzoLayout />)
-                        : user.permission === 2 ? (
-                            <SzervezoLayout />)
-                            : user.permission === 3 ? (
-                                <AdminLayout />)
-                                : <VersenyzoLayout />}>
+            )}
+
+            {/* Admin layout*/}
+            {user && user.permission === 3 && (
+                <Route path="/" element={<AdminLayout />}>
                     <Route index element={<Kezdolap />} />
+                    <Route path="profil" element={<Profil />} />
+                    {/* admin-specifikus útvonalak */}
+                </Route>
+            )}
+
+            {/* ha be van jelentkezve, de nincs permission */}
+            {user && !user.permission && (
+                <Route path="/" element={<VendegLayout />}>
+                    <Route index element={<Kezdolap />} />
+                    <Route path="versenyek" element={<Versenyek />} />
+                    <Route path="galeria" element={<Galeria />} />
+                    <Route path="kapcsolat" element={<Kapcsolat />} />
+                    <Route path="profil" element={<Profil />} />
                 </Route>
             )}
         </Routes>
@@ -74,15 +88,5 @@ function App() {
         </BrowserRouter>
     );
 }
-
-/* function szervezoRoutek(){
-        return(
-            <Routes>
-                <Route path="versenyeim" element={<Versenyek />} />
-                <Route path="szervezes" element={<Galeria />} />
-                <Route path="profilAdatok" element={<Kapcsolat />} />
-            </Routes>
-        );
-} */
 
 export default App;

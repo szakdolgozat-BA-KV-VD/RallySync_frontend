@@ -1,11 +1,12 @@
 import React from 'react'
-import useAuthContext from '../../contexts/AuthContext';
+/* import useAuthContext from '../../contexts/AuthContext'; */
 
 function Kapcsolat() {
-  const { user } = useAuthContext(); 
+/*   const { user } = useAuthContext();  */
   return (
     <div>
       <h1>KAPCSOLAT</h1>
+      <h1></h1>
     </div>
   )
 }
